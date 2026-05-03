@@ -1,0 +1,3 @@
+https://machinelearningplus.com/pyspark/install-pyspark-on-linux/
+https://www.sirin.dev/Programming/Big-Data-Engineering/Graphframe
+https://github.com/graphframes/graphframes/blob/main/README.md

@@ -1,0 +1,30 @@
+{
+  "name": "PySpark Dev Container",
+  "image": "spark:python3",
+  "remoteUser": "root",
+  "containerUser": "root",
+  "updateRemoteUserUID": false,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylance"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "python.terminal.activateEnvironment": true
+      }
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "apt-get update && apt-get install -y python3-venv && python3 -m venv /workspace/.venv && /workspace/.venv/bin/pip install -r /workspace/.devcontainer/requirements.txt",
+  "remoteEnv": {
+    "PYSPARK_PYTHON": "/workspace/.venv/bin/python",
+    "SPARK_HOME": "/opt/spark",
+    "VIRTUAL_ENV": "/workspace/.venv",
+    "PATH": "/workspace/.venv/bin:${containerEnv:PATH}"
+  }
+}
